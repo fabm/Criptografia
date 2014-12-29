@@ -12,7 +12,6 @@ public class Encripter extends Encription {
   public void encript() {
     int rep = (int) ((Math.random() * 20) + 4.5);
     for (int i = 0; i < rep; i++) {
-      System.out.print(i + ",");
       try {
         changeBits(i);
         alternatedShift(i);
@@ -20,15 +19,8 @@ public class Encripter extends Encription {
         throw new IllegalStateException(e);
       }
     }
-    System.out.println();
-
-    for (int i = 0; i < msg.length; i++) {
-      System.out.print(msg[i] + ",");
-    }
-    System.out.println();
 
     String b64 = DatatypeConverter.printBase64Binary(msg);
-    System.out.println("b64 enc:" + b64);
 
     StringBuilder stringBuilder = new StringBuilder(b64.substring(0, 2));
     stringBuilder.append((char) ('f' + rep));
