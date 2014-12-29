@@ -29,7 +29,7 @@ public class Decripter extends Encription {
       System.out.print(i + ",");
       try {
         alternatedShift(i);
-      changeBits(i);
+        changeBits(i);
       } catch (IOException e) {
         throw new IllegalStateException(e);
       }
