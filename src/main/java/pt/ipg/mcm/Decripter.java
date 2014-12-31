@@ -1,8 +1,8 @@
 package pt.ipg.mcm;
 
 import javax.xml.bind.DatatypeConverter;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class Decripter extends Encription {
   public Decripter(byte[] msg, byte[] key) {
@@ -10,23 +10,14 @@ public class Decripter extends Encription {
   }
 
   public void decript() {
-    byte repChar = msg[2];
+    byte repChar = msg[0];
     int rep = repChar - 'f';
 
-    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-
-    for (int i = 0; i < msg.length; i++) {
-      if(i!=2){
-        byteArrayOutputStream.write(msg[i]);
-      }
-    }
-
-    String b64Str = new String(byteArrayOutputStream.toByteArray());
+    String b64Str = new String(Arrays.copyOfRange(msg, 1, msg.length));
 
     msg = DatatypeConverter.parseBase64Binary(b64Str);
 
-    for (int i = rep-1; i >= 0; i--) {
-      System.out.print(i + ",");
+    for (int i = rep - 1; i >= 0; i--) {
       try {
         alternatedShift(i);
         changeBits(i);
@@ -34,7 +25,6 @@ public class Decripter extends Encription {
         throw new IllegalStateException(e);
       }
     }
-    System.out.println();
 
   }
 }

@@ -36,26 +36,6 @@
           <text value="Encriptar"/>
         </properties>
       </component>
-      <component id="69718" class="javax.swing.JTextField" binding="tfEncriptada">
-        <constraints>
-          <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="0" fill="1" indent="1" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-          <gridbag weightx="1.0" weighty="1.0"/>
-        </constraints>
-        <properties>
-          <text value=""/>
-        </properties>
-      </component>
-      <component id="2b21a" class="javax.swing.JTextField" binding="tfOriginal">
-        <constraints>
-          <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-          <gridbag weightx="1.0" weighty="1.0"/>
-        </constraints>
-        <properties/>
-      </component>
       <component id="8f1ff" class="javax.swing.JButton" binding="btDesencriptar">
         <constraints>
           <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="1" use-parent-layout="false"/>
@@ -74,18 +54,6 @@
           <text value="Mensagem Desencriptada"/>
         </properties>
       </component>
-      <component id="99ed4" class="javax.swing.JTextField" binding="tfDesencriptada">
-        <constraints>
-          <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false">
-            <preferred-size width="306" height="28"/>
-          </grid>
-          <gridbag weightx="1.0" weighty="1.0"/>
-        </constraints>
-        <properties>
-          <columns value="0"/>
-          <text value=""/>
-        </properties>
-      </component>
       <component id="84369" class="javax.swing.JLabel" binding="lbChave">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="1" use-parent-layout="false"/>
@@ -95,14 +63,43 @@
           <text value="Chave"/>
         </properties>
       </component>
-      <component id="2fa6a" class="javax.swing.JTextField" binding="tfChave">
+      <component id="5e820" class="javax.swing.JTextArea" binding="taMsgOriginal">
         <constraints>
-          <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="1" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
+          <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
           </grid>
-          <gridbag weightx="1.0" weighty="1.0"/>
+          <gridbag top="10" left="10" bottom="10" right="10" weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties/>
+      </component>
+      <component id="466d4" class="javax.swing.JTextArea" binding="taChave">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+          <gridbag top="10" left="10" bottom="10" right="10" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="abdfc" class="javax.swing.JTextArea" binding="taMsgEncriptad">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+          <gridbag top="10" left="10" bottom="10" right="10" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="114c3" class="javax.swing.JTextArea" binding="taMsgDesencriptada">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+          <gridbag top="10" left="10" bottom="10" right="10" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value=""/>
+        </properties>
       </component>
     </children>
   </grid>

@@ -22,9 +22,10 @@ public class Encripter extends Encription {
 
     String b64 = DatatypeConverter.printBase64Binary(msg);
 
-    StringBuilder stringBuilder = new StringBuilder(b64.substring(0, 2));
-    stringBuilder.append((char) ('f' + rep));
-    stringBuilder.append(b64.substring(2));
+    StringBuilder stringBuilder = new StringBuilder();
+    char repChar = (char) ('f'+ rep);
+    stringBuilder.append(repChar);
+    stringBuilder.append(b64);
     msg = stringBuilder.toString().getBytes();
   }
 

@@ -8,14 +8,14 @@ public class Criptografia extends JFrame {
   private JLabel lbEncriptada;
   private JLabel lbOriginal;
   private JButton btEncriptar;
-  private JTextField tfEncriptada;
-  private JTextField tfOriginal;
   private JButton btDesencriptar;
   private JLabel lbDesencriptada;
-  private JTextField tfDesencriptada;
   private JPanel rootPanel;
   private JLabel lbChave;
-  private JTextField tfChave;
+  private JTextArea taMsgOriginal;
+  private JTextArea taMsgDesencriptada;
+  private JTextArea taMsgEncriptad;
+  private JTextArea taChave;
 
 
   public Criptografia() throws HeadlessException {
@@ -28,18 +28,24 @@ public class Criptografia extends JFrame {
     btEncriptar.addActionListener(new AbstractAction() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        Encripter encripter = new Encripter(tfOriginal.getText().getBytes(), tfChave.getText().getBytes());
-        encripter.encript();
-        tfEncriptada.setText(new String(encripter.getMsg()));
+        byte[] msgOriginal = taMsgOriginal.getText().getBytes();
+        byte[] chave = taChave.getText().getBytes();
+        if (chave.length == 0) {
+          JOptionPane.showMessageDialog(Criptografia.this, "O campo chave não pode ser vazio!", "Erro", JOptionPane.ERROR_MESSAGE);
+        } else {
+          Encripter encripter = new Encripter(taMsgOriginal.getText().getBytes(), taChave.getText().getBytes());
+          encripter.encript();
+          taMsgEncriptad.setText(new String(encripter.getMsg()));
+        }
       }
     });
 
     btDesencriptar.addActionListener(new AbstractAction() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        Decripter decripter = new Decripter(tfEncriptada.getText().getBytes(), tfChave.getText().getBytes());
+        Decripter decripter = new Decripter(taMsgEncriptad.getText().getBytes(), taChave.getText().getBytes());
         decripter.decript();
-        tfDesencriptada.setText(new String(decripter.getMsg()));
+        taMsgDesencriptada.setText(new String(decripter.getMsg()));
       }
     });
 
@@ -87,26 +93,6 @@ public class Criptografia extends JFrame {
     gbc.weightx = 1.0;
     gbc.weighty = 1.0;
     rootPanel.add(btEncriptar, gbc);
-    tfEncriptada = new JTextField();
-    tfEncriptada.setText("");
-    gbc = new GridBagConstraints();
-    gbc.gridx = 1;
-    gbc.gridy = 2;
-    gbc.gridwidth = 2;
-    gbc.weightx = 1.0;
-    gbc.weighty = 1.0;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    rootPanel.add(tfEncriptada, gbc);
-    tfOriginal = new JTextField();
-    gbc = new GridBagConstraints();
-    gbc.gridx = 1;
-    gbc.gridy = 0;
-    gbc.gridwidth = 2;
-    gbc.weightx = 1.0;
-    gbc.weighty = 1.0;
-    gbc.anchor = GridBagConstraints.WEST;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    rootPanel.add(tfOriginal, gbc);
     btDesencriptar = new JButton();
     btDesencriptar.setText("Desencriptar");
     gbc = new GridBagConstraints();
@@ -123,18 +109,6 @@ public class Criptografia extends JFrame {
     gbc.weighty = 1.0;
     gbc.anchor = GridBagConstraints.EAST;
     rootPanel.add(lbDesencriptada, gbc);
-    tfDesencriptada = new JTextField();
-    tfDesencriptada.setColumns(0);
-    tfDesencriptada.setText("");
-    gbc = new GridBagConstraints();
-    gbc.gridx = 1;
-    gbc.gridy = 3;
-    gbc.gridwidth = 2;
-    gbc.weightx = 1.0;
-    gbc.weighty = 1.0;
-    gbc.anchor = GridBagConstraints.WEST;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    rootPanel.add(tfDesencriptada, gbc);
     lbChave = new JLabel();
     lbChave.setText("Chave");
     gbc = new GridBagConstraints();
@@ -143,16 +117,39 @@ public class Criptografia extends JFrame {
     gbc.weighty = 1.0;
     gbc.anchor = GridBagConstraints.EAST;
     rootPanel.add(lbChave, gbc);
-    tfChave = new JTextField();
+    taMsgOriginal = new JTextArea();
+    gbc = new GridBagConstraints();
+    gbc.gridx = 1;
+    gbc.gridy = 0;
+    gbc.gridwidth = 2;
+    gbc.fill = GridBagConstraints.BOTH;
+    gbc.insets = new Insets(10, 10, 10, 10);
+    rootPanel.add(taMsgOriginal, gbc);
+    taChave = new JTextArea();
     gbc = new GridBagConstraints();
     gbc.gridx = 1;
     gbc.gridy = 1;
     gbc.gridwidth = 2;
-    gbc.weightx = 1.0;
-    gbc.weighty = 1.0;
-    gbc.anchor = GridBagConstraints.WEST;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    rootPanel.add(tfChave, gbc);
+    gbc.fill = GridBagConstraints.BOTH;
+    gbc.insets = new Insets(10, 10, 10, 10);
+    rootPanel.add(taChave, gbc);
+    taMsgEncriptad = new JTextArea();
+    gbc = new GridBagConstraints();
+    gbc.gridx = 1;
+    gbc.gridy = 2;
+    gbc.gridwidth = 2;
+    gbc.fill = GridBagConstraints.BOTH;
+    gbc.insets = new Insets(10, 10, 10, 10);
+    rootPanel.add(taMsgEncriptad, gbc);
+    taMsgDesencriptada = new JTextArea();
+    taMsgDesencriptada.setText("");
+    gbc = new GridBagConstraints();
+    gbc.gridx = 1;
+    gbc.gridy = 3;
+    gbc.gridwidth = 2;
+    gbc.fill = GridBagConstraints.BOTH;
+    gbc.insets = new Insets(10, 10, 10, 10);
+    rootPanel.add(taMsgDesencriptada, gbc);
   }
 
   /**
